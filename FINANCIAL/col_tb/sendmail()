@@ -1,0 +1,122 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php
+if (isset($_POST['sendmail'])) {
+	// code...
+    use PHPMailer\PHPMailer\PHPMailer;
+    
+        $name = "Freight";  // Name of your website or yours
+        $to = "dmadaigmichelle@gmail.com";  // mail of reciever
+        $subject = "For payment";
+        $body = "   This is From E-Ship Company we would like to infrom you regarding from payment that our link for Payment is here: http://localhost/Financial/payment/payment.php  Here is your code no:8889 Thank you for trusting us.";
+        $from = "hersonbontilao30@gmail.com";  // you mail
+        $password = "Hersonbon123#";  // your mail password
+
+        // Ignore from here
+        require_once "PHPMailer/PHPMailer.php";
+        require_once "PHPMailer/SMTP.php";
+        require_once "PHPMailer/Exception.php";
+        $mail = new PHPMailer();
+        // To Here
+
+        //SMTP Settings
+        $mail->isSMTP();
+        // $mail->SMTPDebug = 3;  Keep It commented this is used for debugging                          
+        $mail->Host = "smtp.gmail.com"; // smtp address of your email
+        $mail->SMTPAuth = true;
+        $mail->Username = $from;
+        $mail->Password = $password;
+        $mail->Port = 587;  // port
+        $mail->SMTPSecure = "tls";  // tls or ssl
+        $mail->smtpConnect([
+        'ssl' => [
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            ]
+        ]);
+
+        //Email Settings
+        $mail->isHTML(true);
+        $mail->setFrom($from, $name);
+        $mail->addAddress($to); // enter email address whom you want to send
+        $mail->Subject = ("$subject");
+        $mail->Body = $body;
+        if ($mail->send()) {
+             echo '<script type="text/javascript">
+                    swal("Message", "sent", "success").then(function() {
+                    window.location = "customer.php";});
+                  </script>';
+        } else {
+            echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+        }
+    
+
+        // sendmail();  // call this function when you want to
+
+        
+            
+        }
+        
+?>
+<!-- Edit -->
+    <div class="modal fade" id="edit<?php echo $row['book_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                	 <center><h4 >Send Confirmation</h4></center>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   
+                </div>
+                <div class="modal-body">
+				<?php
+					$edit=mysqli_query($conn,"SELECT * FROM `booked` where book_id='".$row['book_id']."'");
+					$erow=mysqli_fetch_array($edit);
+				?>
+				<div class="container-fluid">
+				<form method="POST" >
+					<div class="row">
+						<div class="col-lg-2">
+							<label style="position:relative; top:7px;">Full Name:</label>
+						</div>
+						<div class="col-lg-10">
+							<input type="text" name="firstname" class="form-control" value="<?php echo $erow['s_fname']; ?>"disabled>
+						</div>
+					</div>
+					<div style="height:10px;"></div>
+					<div class="row">
+						<div class="col-lg-2">
+							<label style="position:relative; top:7px;">Email </label>
+						</div>
+						<div class="col-lg-10">
+							<input type="text" name="lastname" class="form-control" value="<?php echo $erow['email']; ?>" disabled>
+						</div>
+					</div>
+					<div style="height:10px;"></div>
+					<div class="row">
+						<div class="col-lg-2">
+							<label style="position:relative; top:7px;">Amount:</label>
+						</div>
+						<div class="col-lg-10">
+							<input type="text" name="address" class="form-control" value="<?php echo $erow['price']; ?>" disabled>
+						</div>
+					</div>
+					<div style="height:10px;"></div>
+					<div class="row">
+						<div class="col-lg-2">
+							<label style="position:relative; top:7px;">Message:</label>
+						</div>
+						<div class="col-lg-10">
+							<textarea type="text" name="address" class="form-control" value="<?php echo $erow['price']; ?>" ></textarea>
+						</div>
+					</div>
+                </div> 
+				</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                    <button type="submit" name="sendmail" class="btn btn-warning"><span class="glyphicon glyphicon-check"></span> Save</button>
+                </div>
+				</form>
+            </div>
+        </div>
+    </div>
+<!-- /.modal -->
