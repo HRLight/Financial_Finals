@@ -124,10 +124,11 @@
                                         echo "<th>Requestor</th>";
                                          echo "<th>Department</th>";
                                         echo "<th>Discription</th>";
-                                        echo "<th>Amount</th>";
+                                       
                                         echo "<th>Date</th>";
                                         echo "<th>Payment Type</th>";
                                          echo "<th>Remarks</th>";
+                                          echo "<th>Amount</th>";
                                         echo '<th><center>Action</center></th>';
                                       
                                         echo "</tr>";
@@ -138,18 +139,19 @@
                                         echo "<td>" . $row['Requestor'] . "</td>";
                                         echo "<td>" . $row['Department'] . "</td>";
                                         echo "<td>" . $row['Purpose'] . "</td>";
-                                         echo "<td>" . $row['Amount'] . "</td>";
+                                        
                                         echo "<td>" . $row['Date'] . "</td>";
                                          echo "<td>" . $row['Payment_type']. "</td>";
+
                                         echo "<td>" . $row['Remarks'] . "</td>";
+                                         echo "<td>" . $row['Amount'] . "</td>";
                                         echo '<td><center>';
                                              echo ' <button type="button" class="btn btn-primary btn-sm editbtn" style="width:100%;" > select </button>';
                                              echo '</center></td>';
                                               
                                     echo "</tr>";
                                 }
-                                echo "</tbody>";                            
-                            echo "</table>";
+                              
                             // Free result set
                             mysqli_free_result($result);
                         } else{
@@ -158,6 +160,25 @@
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";
                     }
+
+
+                       $sq = "SELECT SUM(`Amount`) AS sum FROM `fnc_budget_request` WHERE Remarks='Approved'";
+                                    if($resul = mysqli_query($con, $sq)){
+                                        if(mysqli_num_rows($resul) > 0){
+
+                                           while($rows = mysqli_fetch_array($resul)){
+                                 echo "<thead>";
+                                echo '<tr  class="bg-secondary">';
+                                echo '<td colspan="6">Total Amount </td>';
+                                echo '<td colspan="2"> P ' . $rows['sum'] . "</td>";
+                                echo "</tr>";
+                                 echo "</thead>";
+                             echo "</tbody>";                            
+                            echo "</table>";
+                                }
+                             }
+
+                       }
                     ?>
              </div>  
      </div>

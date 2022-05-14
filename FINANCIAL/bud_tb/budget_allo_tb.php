@@ -107,10 +107,10 @@ if(isset($_POST['insertdata']))
                                 echo '<thead class="bg-successs">';
                                         echo "<tr>";
                                          echo "<th>Department</th>";
-                                         echo "<th>Amount</th>";
                                          echo "<th>Start Date</th>";
                                         echo "<th>End Date</th>";
                                         echo "<th>Recurrence</th>";
+                                         echo "<th>Amount</th>";
                                         
                                         echo "</tr>";
                                 echo "</thead>";
@@ -119,15 +119,15 @@ if(isset($_POST['insertdata']))
                                     echo "<tr>";
                                         
                                         echo "<td>" . $row['department'] . "</td>";
-                                        echo "<td>" . $row['amount'] . "</td>";
+                                       
                                         echo "<td>" . $row['start_date'] . "</td>"; 
                                         echo "<td>" . $row['end_date'] . "</td>";
                                         echo "<td>" . $row['reccurrence'] . "</td>";
+                                         echo "<td>" . $row['amount'] . "</td>";
                                         
                                     echo "</tr>";
                                 }
-                                echo "</tbody>";                            
-                            echo "</table>";
+                              
                             // Free result set
                             mysqli_free_result($result);
                         } else{
@@ -136,6 +136,26 @@ if(isset($_POST['insertdata']))
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";
                     }
+
+
+
+                      $sq = "SELECT SUM(`amount`) AS sum FROM `fnc_budget_allo`";
+                                    if($resul = mysqli_query($con, $sq)){
+                                        if(mysqli_num_rows($resul) > 0){
+
+                                           while($rows = mysqli_fetch_array($resul)){
+                                 echo "<thead>";
+                                echo '<tr  class="bg-secondary">';
+                                echo '<td colspan="4">Total Amount </td>';
+                                echo '<td colspan="1"> P ' . $rows['sum'] . "</td>";
+                                echo "</tr>";
+                                 echo "</thead>";
+                             echo "</tbody>";                            
+                            echo "</table>";
+                                }
+                             }
+
+                       }
                
                     ?>
          </div>

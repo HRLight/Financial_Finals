@@ -8,7 +8,6 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-               
                     <div class="wrappe"  >
                                  <div class="table-responsive-sm">
                                    <?php
@@ -27,9 +26,9 @@
                                         echo "<th>Particular</th>";
                                          echo "<th>Ref#</th>";
                                         echo "<th>Date Receive</th>";
+                                          echo "<th>Mode of Payment</th>";
                                         echo "<th>Amount</th>";
-                                         echo "<th>Mode of Payment</th>";
-                                        
+                                       
                                         echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -42,12 +41,12 @@
                                         echo "<td>" . $row['Particular'] . "</td>";
                                          echo "<td>" . $row['Ref_no'] . "</td>";
                                          echo "<td>" . $row['Date_recieve'] . "</td>";
+                                          echo "<td>" . $row['Payment_type'] . "</td>"; 
                                         echo "<td>" . $row['Amount'] . "</td>";
-                                         echo "<td>" . $row['Payment_type'] . "</td>";     
+                                            
                                     echo "</tr>";
                                 }
-                                echo "</tbody>";                            
-                            echo "</table>";
+                             
                             // Free result set
                             mysqli_free_result($result);
                         } else{
@@ -56,7 +55,30 @@
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";
                     }
+
+
+                                     $sq = "SELECT SUM(`Amount`) AS sum FROM `fnc_collection`;";
+                                      if($resul = mysqli_query($con, $sq)){
+                                        if(mysqli_num_rows($resul) > 0){
+                                           while($rows = mysqli_fetch_array($resul)){
+                                 echo "<thead>";
+                                echo '<tr class="bg-secondary">';
+                                echo '<td colspan="7">Total Amount </td>';
+                                echo "<td>P " . $rows['sum'] . "</td>";
+                                echo "</tr>";
+                                 echo "</thead>";
+
+                             echo "</tbody>";                            
+                            echo "</table>";
+                                }
+                             }
+
+                       }
+
                     ?>
+
+
+
              </div>  
      </div>
 </div>

@@ -80,8 +80,7 @@
                                               
                                     echo "</tr>";
                                 }
-                                echo "</tbody>";                            
-                            echo "</table>";
+                              
                             // Free result set
                             mysqli_free_result($result);
                         } else{
@@ -90,6 +89,25 @@
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";
                     }
+
+
+                      $sq = "SELECT SUM(`Amount`) AS sum FROM `fnc_budget_request` WHERE Remarks='Release'";
+                                    if($resul = mysqli_query($con, $sq)){
+                                        if(mysqli_num_rows($resul) > 0){
+
+                                           while($rows = mysqli_fetch_array($resul)){
+                                 echo "<thead>";
+                                echo '<tr  class="bg-secondary">';
+                                echo '<td colspan="5">Total Amount </td>';
+                                echo '<td colspan="1"> P ' . $rows['sum'] . "</td>";
+                                echo "</tr>";
+                                 echo "</thead>";
+                             echo "</tbody>";                            
+                            echo "</table>";
+                                }
+                             }
+
+                       }
                     ?>
              </div>  
      </div>

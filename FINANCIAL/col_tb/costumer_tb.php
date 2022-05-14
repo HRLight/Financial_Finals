@@ -167,7 +167,6 @@
                                         echo "<th>Email</th>";
                                          echo "<th>Re#</th>";
                                         echo "<th>Amount</th>";
-                                        echo "<th>Status</th>";
                                         echo "<th>Action</th>";
                                         echo "</tr>";
                                 echo "</thead>";
@@ -180,7 +179,7 @@
                                         echo "<td>" . $row['email'] . "</td>";
                                          echo "<td>" . $row['ref_no'] . "</td>";
                                        echo "<td>" . $row['price'] . "</td>";
-                                       echo "<td>" . $row['status'] . "</td>";
+                                    
                                         echo '<td>';
                                         $stat=$row['status'];
                                         if ($stat=="Paid") {
@@ -189,12 +188,10 @@
                                             echo ' <button type="button" class="btn btn-success btn-sm editbtn" style="width:100%;"> select </button>';
                                         }
                                             
-
                                             echo '</td>';
                                     echo "</tr>";
                                 }
-                                echo "</tbody>";                            
-                            echo "</table>";
+                            
                             // Free result set
                             mysqli_free_result($result);
                         } else{
@@ -203,6 +200,26 @@
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";
                     }
+
+
+                        $sq = "SELECT SUM(`price`) AS sum FROM `cr1_booked`;";
+                                    if($resul = mysqli_query($con, $sq)){
+                                        if(mysqli_num_rows($resul) > 0){
+
+                                           while($rows = mysqli_fetch_array($resul)){
+                                echo '<thead>';
+                                echo '<tr  class="bg-secondary">';
+                                echo '<td colspan="5">Total Amount </td>';
+                                echo '<td colspan="3"> P ' . $rows['sum'] . "</td>";
+                                echo "</tr>";
+                                  echo "</thead>";
+                             echo "</tbody>";                            
+                            echo "</table>";
+                                }
+                             }
+
+                       }
+
                     ?>
              </div>  
      </div>

@@ -4,7 +4,7 @@ if(isset($_GET["s_contact"]) && !empty(trim($_GET["s_contact"]))){
     // Include config file
     require_once "config.php";
     // Prepare a select statement
-    $sql = "SELECT * FROM `booked` WHERE s_contact=?";
+    $sql = "SELECT * FROM `cr1_booked` WHERE s_contact=?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
