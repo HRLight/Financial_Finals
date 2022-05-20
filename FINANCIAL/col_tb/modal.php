@@ -72,7 +72,157 @@
                             </select>
                         </div>
                     </div>
-             </div> 
+
+                         <div style="height:20px;"></div>
+                                <ul class="nav nav-tabs " id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                      <a class="nav-link active bg-primary" id="gcash-tab" data-toggle="tab" href="#gcash" role="tab" aria-controls="gcash" aria-selected="true">GCASH</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                      <a class="nav-link bg-primary" id="paymaya-tab" data-toggle="tab" href="#paymaya" role="tab" aria-controls="paymaya"
+                                     aria-selected="false">PAYMAYA</a>
+                                    </li>
+                                     <li class="nav-item">
+                                      <a class="nav-link bg-success" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal"
+                                     aria-selected="false">PAYPAL</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link bg-primary" id="credit-tab" data-toggle="tab" href="#credit" role="tab" aria-controls="credit"
+                                     aria-selected="false">CREDIT CARD</a>
+                                    </li>
+                                       <li class="nav-item">
+                                      <a class="nav-link bg-success" id="debit-tab" data-toggle="tab" href="#debit" role="tab" aria-controls="debit"
+                                     aria-selected="false">DEBIT CARD</a>
+                                    </li>
+                                </ul>
+
+                                <!-- For Gcash payment-->
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="gcash" role="tabpanel" aria-labelledby="gcash-tab">
+                                         <div style="height:20px;"></div>
+                                         <div>
+
+                                            <table  class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                      <th colspan="4" class="bg-primary">Gcash</th>  
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="2">
+                                                             <label>Account Name</label>
+                                                            <input type="name" class="form-control" name="name" placeholder="Account Name">
+                                                        </th>
+                                                        <th>
+                                                          <label>Phone Number</label>
+                                                            <input type="number" class="form-control" name="number" placeholder="+63"></th>
+                                                    </tr>
+                                                    <tr>
+                                                         <th colspan="2">
+                                                          <label>Ref No.</label>
+                                                            <input type="text " class="form-control" name="number" ></th>
+
+                                                            <th>
+                                                          <label>Amount</label>
+                                                            <input type="number" class="form-control" name="number"></th> 
+                                                    </tr>
+                                                    <tr>
+                                                        
+                                                        <th><label>Date Of Payment</label>
+                                                         <input type="date" class="form-control" name="number"></th>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+                                        
+                                          </div>
+                                                                           
+                                    </div>
+                                 
+                                
+                             <!-- end of Gcsh Payment-->
+
+
+
+                             <!-- Start of PayPal Payment-->
+
+                                 <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                                    <div style="height:20px;"></div>
+                                      <table  class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                      <th colspan="4" class="bg-success">Paypal</th>  
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="2">
+                                                             <label>Account Name</label>
+                                                            <input type="name" class="form-control" name="name" placeholder="Account Name">
+                                                        </th>
+                                                        <th>
+                                                          <label>Email</label>
+                                                            <input type="email" class="form-control" name="number" placeholder="sample@gmail.com"></th>
+                                                    </tr>
+                                                    <tr>
+                                                         <th colspan="2">
+                                                          <label>Ref No.</label>
+                                                            <input type="text" class="form-control" name="number" ></th>
+
+                                                            <th>
+                                                          <label>Amount</label>
+                                                            <input type="number" class="form-control" name="number"></th> 
+                                                    </tr>
+                                                    <tr>
+                                                        <th> <label>Date Of Payment</label>
+                                                         <input type="date" class="form-control" name="number"></th>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+                                    <div class="row">
+                                </div>
+                              </div>
+
+                              <!-- End of Paypal Payment-->
+
+
+                                <!-- Start of Paymaya Payment-->
+                                 <div class="tab-pane fade" id="paymaya" role="tabpanel" aria-labelledby="paymaya-tab">
+                                    <div style="height:20px;"></div>
+                                      <table  class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                      <th colspan="4" class="bg-success">PayMaya</th>  
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="2">
+                                                             <label>Account Name</label>
+                                                            <input type="name" class="form-control" name="name" placeholder="Account Name">
+                                                        </th>
+                                                        <th>
+                                                          <label>Email</label>
+                                                            <input type="email" class="form-control" name="number" placeholder="sample@gmail.com"></th>
+                                                    </tr>
+                                                    <tr>
+                                                         <th colspan="2">
+                                                          <label>Ref No.</label>
+                                                            <input type="text" class="form-control" name="number" ></th>
+
+                                                            <th>
+                                                          <label>Amount</label>
+                                                            <input type="number" class="form-control" name="number"></th> 
+                                                    </tr>
+                                                    <tr>
+                                                        <th> <label>Date Of Payment</label>
+                                                         <input type="date" class="form-control" name="number"></th>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+                                      </div>
+                                 </div>
+                                 <!-- End Paymaya-->
+                        </div> 
+
                 </div>
                 <div class="modal-footer">
                      

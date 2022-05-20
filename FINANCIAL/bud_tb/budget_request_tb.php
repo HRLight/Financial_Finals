@@ -9,11 +9,10 @@
         $name = $_POST['fname'];
         $dept = $_POST['dept'];
          $status = "Approved";
-         $qr="UPDATE `fnc_budget_allo` SET amount=amount-'$amt' WHERE department='$dept'";
-         $qr_run = mysqli_query($conn, $qr);
-        $query = "UPDATE `fnc_budget_request` SET `Remarks`='$status' WHERE Requestor='$name'";
+         $qr="UPDATE `fnc_budget_allo` SET `amount`=`amount`-'$amt' WHERE `department`='$dept'";
+         $qr_run = mysqli_query($con1, $qr);
+        $query = "UPDATE `fnc_budget_request` SET `Remarks`='$status' WHERE Requestor='$name' AND ";
         $query_run = mysqli_query($con, $query);
-
         if($query_run)
         {
             if ($qr_run) {
@@ -25,10 +24,9 @@
             }
             else{
               echo '<script> alert("Data Not Updated"); </script>';
+            }  
+            
             }
-             
-           
-        }
         else
         {
             echo '<script> alert("Data Not Updated"); </script>';
@@ -131,21 +129,15 @@
                 <form  method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                         
                             <label>Requestors Name</label>
                             <input type="text" name="fname" id="fname" class="form-control" readonly>
                         </div>
-
                         <div class="form-group">
                             <label>Department</label>
                             <input type="text" name="dept" id="dept" class="form-control" readonly>
                         </div>
 
-                        <div class="form-group">
-                            <label>Amount</label>
-                            <input type="text" name="amt" id="amt" class="form-control"
-                                placeholder="Enter Course" readonly>
-                        </div>
+                       
 
                         <div class="form-group">
                             <label>Porpose</label>
@@ -155,8 +147,12 @@
                        
                          <div class="form-group">
                             <label> Status </label>
-                            <input type="text" name="status" value="status" id="status" class="form-control"
+                            <input type="text" name="status"  id="statu" class="form-control"
                               placeholder="Enter Your Email" readonly>
+                        </div>
+                         <div class="form-group">
+                            <label>Amount</label>
+                            <input type="text" name="amt" id="amt" class="form-control" readonly>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -212,7 +208,6 @@
                                         
                                         echo "<td>" . $row['Requestor'] . "</td>"; 
                                         echo "<td>" . $row['Department'] . "</td>";
-                                       
                                         echo "<td>" . $row['Purpose'] . "</td>";
                                         echo "<td>" . $row['Remarks'] . "</td>";
                                          echo "<td>" . $row['Amount'] . "</td>";
@@ -220,7 +215,6 @@
 
                                            
                                              echo ' <button type="button" class="btn btn-primary btn-sm editbtn" style="width:100%;" > select </button>';
-
                                            
                                         echo "</td>";
                                     echo "</center></tr>";
@@ -235,7 +229,7 @@
                         echo "Oops! Something went wrong. Please try again later.";
                     }
                        $sq = "SELECT SUM(`Amount`) AS sum FROM `fnc_budget_request` WHERE Remarks='Pending'";
-                                    if($resul = mysqli_query($con, $sq)){
+                                    if($resul = mysqli_query($conn, $sq)){
                                         if(mysqli_num_rows($resul) > 0){
 
                                            while($rows = mysqli_fetch_array($resul)){
@@ -277,9 +271,10 @@
                
                 $('#fname').val(data[0]);
                 $('#dept').val(data[1]);
-                $('#amt').val(data[2]);
-                $('#por').val(data[3]);
-                $('#status').val(data[4]);
+                $('#por').val(data[2]);
+                $('#statu').val(data[3]);
+                $('#amt').val(data[4]);
+             
                 
                 
             });
