@@ -11,7 +11,7 @@
          $status = "Approved";
          $qr="UPDATE `fnc_budget_allo` SET `amount`=`amount`-'$amt' WHERE `department`='$dept'";
          $qr_run = mysqli_query($con1, $qr);
-        $query = "UPDATE `fnc_budget_request` SET `Remarks`='$status' WHERE Requestor='$name' AND ";
+        $query = "UPDATE `fnc_budget_request` SET `Remarks`='$status' WHERE Requestor='$name'";
         $query_run = mysqli_query($con, $query);
         if($query_run)
         {
