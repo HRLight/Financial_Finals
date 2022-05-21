@@ -13,7 +13,7 @@
                                     // Include config file
                                     require_once "config.php";
                                     // Attempt select query execution
-                                    $sql = "SELECT * FROM `fnc_chart_accounts`;";
+                                    $sql = "SELECT * FROM `fnc_journal_entry`";
                                     if($result = mysqli_query($link, $sql)){
                                        if(mysqli_num_rows($result) > 0){
                              echo '<table id="example11" class="table table-bordered table-hover ">';
@@ -29,8 +29,8 @@
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                     echo "<td><center>" . $row['Acc_no'] . "</center></td>"; 
-                                        echo "<td><center>" . $row['Acc_Name'] . "</center></td>"; 
-                                        echo "<td><center>" . $row['Account_type'] . "</center></td>";
+                                        echo "<td><center>" . $row['Particulars'] . "</center></td>"; 
+                                        echo "<td><center>" . $row['account_category'] . "</center></td>";
                                        
                                     echo "</tr>";
                                 }
@@ -47,25 +47,7 @@
                     ?>
              </div>  
      </div>
-     <div class="nav-bar" style="float:right;">
-            <nav aria-label="...">
-                  <ul class="pagination">
-                    <li class="page-item disabled">
-                      <span class="page-link">Previous</span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active">
-                      <span class="page-link"> 2
-                        <span class="sr-only">(current)</span>
-                      </span>
-                    </li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                      <a class="page-link" href="#">Next</a>
-                       </li>
-                     </ul>
-                </nav>
-       </div>
+    
    </div>
 </div>
 </div>

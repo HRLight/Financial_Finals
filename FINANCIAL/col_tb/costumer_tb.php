@@ -11,7 +11,7 @@
         $subject = "For Payment";
        
         $from = "hersonbontilao30@gmail.com";  // you mail
-        $password = "Hersonbon123#";  // your mail password
+        $password = "Hersonbontilao123#";  // your mail password
 
         // Ignore from here
         require_once "PHPMailer/PHPMailer.php";

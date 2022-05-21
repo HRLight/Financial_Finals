@@ -253,7 +253,8 @@ $i=generatekey();
        $amt=$_POST['amt'];
         $payment=$_POST['Payment'];
 
-$sql = "INSERT INTO `fnc_collection`(`PK_Account_id`, `Name`, `Account_no`, `Particular`, `Ref_no`, `Payment_type`, `Amount`, `Description`) VALUES ('','$name','SINV-1010$i','$par','$ref','$payment','$amt','$desc')";
+$sql = "INSERT INTO `fnc_collection`(`PK_Account_id`, `Name`, `Account_no`, `Particular`, `Ref_no`, `Payment_type`, `Amount`, `Description`) VALUES ('','$name','SINV-1010$i','$par','$ref','$payment','$amt','$desc') , ('','Colected sales','SINV-1010$i','0','$ref','$payment','$amt','$desc')";
+
 
 $ql = "UPDATE `cr1_booked` SET status ='Paid' WHERE ref_no='$ref'";
 if ($link->query($sql) === TRUE and $conn->query($ql) === TRUE) {
