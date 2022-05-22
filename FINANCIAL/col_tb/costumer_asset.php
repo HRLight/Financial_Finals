@@ -102,7 +102,7 @@
                                 placeholder="Enter Your Email" readonly >
                         </div>
                         <div class="form-group">
-                            <label> Email </label>
+                            <label> Mail </label>
                             <textarea type="text" name="message" id="message" class="form-control"
                                 placeholder="Write A message here!"></textarea>
                         </div>
@@ -120,7 +120,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h2><b>Booking Customer</b></h2>
+              <h2><b>Asset Customer</b></h2>
             </div>
           
                      <!-- Modal -->
@@ -155,7 +155,7 @@
                                     // Include config file
                                     require_once "config.php";
                                     // Attempt select query execution
-                                    $sql = "SELECT * FROM `cr1_booked`";
+                                    $sql = "SELECT * FROM `log2_vendorcustomer`";
                                     if($result = mysqli_query($link, $sql)){
                                         if(mysqli_num_rows($result) > 0){
                             echo '<table id="example1" class="table table-bordered table-hover ">';
@@ -165,7 +165,7 @@
                                         echo "<th>Adress</th>";
                                         echo "<th>Mobile no.</th>";
                                         echo "<th>Email</th>";
-                                         echo "<th>Re#</th>";
+                                       
                                         echo "<th>Amount</th>";
                                         echo "<th>Action</th>";
                                         echo "</tr>";
@@ -173,15 +173,15 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['s_fname'] . "</td>";
-                                       echo "<td>" . $row['s_add'] . "</td>";
-                                       echo "<td>" . $row['r_contact'] . "</td>";
+                                        echo "<td>" . $row['fullname'] . "</td>";
+                                       echo "<td>" . $row['address'] . "</td>";
+                                       echo "<td>" . $row['contactno'] . "</td>";
                                         echo "<td>" . $row['email'] . "</td>";
-                                         echo "<td>" . $row['ref_no'] . "</td>";
+                                      
                                        echo "<td>" . $row['price'] . "</td>";
                                     
-                                         echo '<td><center>';
-                                        $stat=$row['status'];
+                                        echo '<td><center>';
+                                        $stat=$row['remark'];
                                         if ($stat=="Paid") {
                                             echo ' <button type="button" class="btn btn-outline-primary btn-sm editbtn" style="width:50%;" disabled> <i class="fas fa-location-arrow"> </button>';
                                         }else{

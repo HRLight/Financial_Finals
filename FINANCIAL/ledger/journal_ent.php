@@ -13,7 +13,7 @@
                                     // Include config file
                                     require_once "config.php";
                                     // Attempt select query execution
-                                    $sql = "SELECT * FROM `fnc_journal_entry` ORDER BY Acc_no ASC";
+                                    $sql = "SELECT * FROM `fnc_journal_entry`  WHERE `jornal_code`=0 ORDER BY Acc_no ASC";
                                     if($result = mysqli_query($link, $sql)){
                                        if(mysqli_num_rows($result) > 0){
                             echo '<table id="example1" class="table table-bordered table-hover ">';
@@ -57,6 +57,59 @@
 
                                      echo "<td><center>" .$a. "</center></td>";
                                           echo "<td><center>" . $row['credit'] . "</center></td>";
+                                      echo "</tr>";
+
+                                    }
+
+
+                                }
+                            
+                            // Free result set
+                            mysqli_free_result($result);
+                        } else{
+                            echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+                        }
+                    } else{
+                        echo "Oops! Something went wrong. Please try again later.";
+                    }
+                    ?>
+
+
+                          <?php
+                                    // Include config file
+                                    require_once "config.php";
+                                    // Attempt select query execution
+                                    $sql = "SELECT * FROM `fnc_journal_entry`  WHERE `jornal_code`=1 ORDER BY Acc_no ASC";
+                                    if($result = mysqli_query($con, $sql)){
+                                       if(mysqli_num_rows($result) > 0){
+                           
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr>";
+                                      
+                                       if ($row['debit']==0) {
+                                         echo "<td><center>  </center></td>"; 
+                                          echo "<td><center>" . $row['Acc_no'] . "</center></td>"; 
+                                        echo "<td><center>" . $row['Particulars'] . "</center></td>"; 
+                                       $a=$row['credit'];
+                                         echo "<td><center>" . $row['debit'] . "</center></td>";
+                                        echo "<td><center>" . $row['credit'] . "</center></td>";
+                                       
+                                        echo "</tr>";
+                                }else{
+                                       echo "<tr>";
+                                          echo "<td><center>" . $row['date_created'] . "</center></td>"; 
+                                         echo "<td><center>" . $row['Acc_no'] . "</center></td>"; 
+                                        echo "<td><center>" . $row['Particulars'] . "</center></td>"; 
+                                        echo "<td><center>" . $row['debit'] . "</center></td>";
+                                        echo "<td><center>" . $row['credit'] . "</center></td>";
+                                      
+                                       
+                                    echo "</tr>";
+                                        echo '<tr class="bg-dark">';
+                                     echo '<td colspan="3"><center>Total</center></td>';
+
+                                     echo "<td><center>" .$a. "</center></td>";
+                                          echo "<td><center>" . $row['debit'] . "</center></td>";
                                       echo "</tr>";
 
                                     }

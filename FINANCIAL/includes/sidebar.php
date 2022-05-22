@@ -13,8 +13,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php
-                  echo "<b>".$_SESSION['fname']. $_SESSION['lname']."</b>"
-                    
+                  echo "<b>".$_SESSION['fname']. $_SESSION['lname']."</b>" 
                   ?></a>
         </div>
       </div>
@@ -31,7 +30,33 @@
               </p>
             </a>
           </li>
-          
+
+
+             <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-friends "></i>
+              <p>
+               Costumer
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+           
+              <li class="nav-item">
+                <a href="customer.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Booked</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="asset_costumer.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Asset</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
  <!-- DONE Collection -->
              <li class="nav-item">
             <a href="#" class="nav-link">
@@ -43,17 +68,11 @@
             </a>
             <ul class="nav nav-treeview">
            
-              <li class="nav-item">
-                <a href="customer.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Costumer</p>
-                </a>
-              </li>
 
               <li class="nav-item">
                 <a href="col_list.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Collection List</p>
+                  <p> Add Collection</p>
                 </a>
               </li>
 
@@ -66,6 +85,7 @@
              
             </ul>
           </li>
+
 <!-- Done Budget Management -->
              <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

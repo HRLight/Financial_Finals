@@ -41,8 +41,6 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                
-
                 <p>Total Profit</p>
                 <h3>P 500</h3>
               </div>
@@ -52,6 +50,10 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+
+
+
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -66,6 +68,10 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+
+
+
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -81,6 +87,12 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+
+
+
+
+
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -97,9 +109,15 @@
           </div>
           <!-- ./col -->
         </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <section class="content">
+
+
+
+
+
+
+
+     
+      <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-6">
@@ -121,40 +139,30 @@
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-
-            <!-- DONUT CHART -->
+   
           </div>
-          <!-- /.col (LEFT) -->
-          <div class="col-md-6">
-            <!-- LINE CHART -->
-            
-            <!-- /.card -->
 
-            <!-- BAR CHART -->
+          <div class="col-md-6">
+           
             <div class="card card-success">
               <div class="card-header">
                 <h3 class="card-title">Sales Graph </h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                </div>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                  </div>
               </div>
+
               <div class="card-body">
                 <div class="chart">
                   <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
               </div>
-              <!-- /.card-body -->
+              
             </div>
-            <!-- /.card -->
-
-            <!-- STACKED BAR CHART -->
-           
-            <!-- /.card -->
-
+        
           </div>
           <!-- /.col (RIGHT) -->
         </div>
@@ -170,10 +178,7 @@
     </div>
   </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
+
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
@@ -182,6 +187,9 @@
 <?php 
 include('includes/scripts.php');
 ?>
+
+
+
 <script>
   $(function () {
     /* ChartJS
@@ -251,6 +259,11 @@ include('includes/scripts.php');
       data: areaChartData, 
       options: areaChartOptions
     })
+
+
+
+
+    
 
     //-------------
     //- BAR CHART -
