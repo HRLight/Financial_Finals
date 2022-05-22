@@ -1,13 +1,29 @@
 <?php
+$con4  = mysqli_connect("localhost","root","","fnc_management");
+ if (!$con4) {
+     # code...
+    echo "Problem in database connection! Contact administrator!" . mysqli_error();
+ }else{
+         $sql ="SELECT * FROM `fnc_budget_allo`";
+         $result = mysqli_query($con4,$sql);
+         $chart_data="";
+         while ($row = mysqli_fetch_array($result)) { 
+             $dataPoints = array(array("label"=> $row['department'], "y"=>  $row['amount']));
+            $department[]  = $row['department'];
+            $remaining[] = $row['amount'];
+              $allocated[] = $row['remaining_budget'];
+        }
+ }
+?>
+
+
+<?php
  
+
 $dataPoints = array(
-	array("label"=> "Total Cash", "y"=> 4500),
-	array("label"=> "Total Budget", "y"=> 5000),
-	array("label"=> "Accumulated Budget", "y"=> 5000),
-	array("label"=> "Remaining Budget", "y"=> 4500),
+	array("label"=>  $department, "y"=> $remaining));
 	
-);
-	
+
 ?>
 <!DOCTYPE HTML>
 <html>

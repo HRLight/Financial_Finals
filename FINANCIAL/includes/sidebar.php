@@ -36,7 +36,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-friends "></i>
               <p>
-               Costumer
+               Customer
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -134,7 +134,7 @@
             <a href="recievable.php" class="nav-link">
               <i class="nav-icon    fas fa-receipt"></i>
               <p>
-                 Recieveble
+                Receivable
               </p>
             </a>
           </li>
@@ -176,9 +176,9 @@
               </li>
 
                 <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="income_statement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Financial Statement</p>
+                  <p>Income Statement</p>
                 </a>
               </li>
             </ul>

@@ -14,7 +14,7 @@
                                     // Include config file
                                     require_once "config.php";
                                     // Attempt select query execution
-                                    $sql = "SELECT * FROM `fnc_collection`";
+                                    $sql = "SELECT * FROM `fnc_collection` ORDER BY `PK_Account_id`  DESC";
                                     if($result = mysqli_query($link, $sql)){
                                         if(mysqli_num_rows($result) > 0){
                             echo '<table id="example1" class="table table-bordered table-hover ">';
@@ -36,7 +36,6 @@
                                     echo "<tr>";
                                         echo "<td>" . $row['Name'] . "</td>";
                                         echo "<td>" . $row['Account_no'] . "</td>";
-
                                         echo "<td>" . $row['Description'] . "</td>";
                                         echo "<td>" . $row['Particular'] . "</td>";
                                          echo "<td>" . $row['Ref_no'] . "</td>";

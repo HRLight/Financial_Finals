@@ -30,7 +30,6 @@
                         </div>
                     <div class="wrappe"  >
                                  <div class="table-responsive-sm">
-                                  
                                    <?php
                                     // Include config file
                                     require_once "config.php";
@@ -59,8 +58,6 @@
                                          echo "<td>" . $row['Ref_no'] . "</td>";
                                          echo "<td>" . $row['Date_recieve'] . "</td>";
                                         echo "<td>" . $row['Amount'] . "</td>";
-                                       
-                                           
                                     echo "</tr>";
                                 }
                               

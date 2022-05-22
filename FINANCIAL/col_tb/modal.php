@@ -15,7 +15,7 @@
                             <label style="position:relative; top:7px;">Name:</label>
                         </div>
                         <div class="col-lg-10">
-                            <input type="text" name="name" class="form-control" placeholder="Name" required>
+                            <input type="text" name="fullname" class="form-control" placeholder="Name" required>
                         </div>
                     </div>
                     <div style="height:10px;"></div>
@@ -240,24 +240,29 @@ require_once './config.php';
 if (isset($_POST['pay']))
   {
     function generatekey(){
-  $keyLenght=8;
-  $str="1234567890";
-  $randStr=substr(str_shuffle($str),0,$keyLenght);
-  return $randStr;
-}
-$i=generatekey();
-    $name=$_POST['name'];
+     $keyLenght=8;
+     $str="1234567890";
+     $randStr=substr(str_shuffle($str),0,$keyLenght);
+     return $randStr;
+    }
+    $i=generatekey();
+    $name=$_POST['fullname'];
     $desc=$_POST['desc'];
-     $par=$_POST['Particulars'];
-      $ref=$_POST['ref'];
-       $amt=$_POST['amt'];
-        $payment=$_POST['Payment'];
+    $par=$_POST['Particulars'];
+    $ref=$_POST['ref'];
+    $amt=$_POST['amt'];
+    $payment=$_POST['Payment'];
 
 $sql = "INSERT INTO `fnc_collection`(`PK_Account_id`, `Name`, `Account_no`, `Particular`, `Ref_no`, `Payment_type`, `Amount`, `Description`) VALUES ('','$name','SINV-1010$i','$par','$ref','$payment','$amt','$desc') , ('','Colected sales','SINV-1010$i','0','$ref','$payment','$amt','$desc')";
 
+$sqlentry="INSERT INTO `fnc_journal_entry` (`id`, `Acc_no`, `Particulars`, `description`, `account_category`, `account_name`, `credit`, `debit`, `jornal_code`) VALUES('', '$i', 'Accounts Recievable', '$payment', 'Asset', 'Accounts Recievable', '', '$amt', 3),
+                        ('', '$i', '$par', '$payment', 'Revenue', '$par', '$amt', '', 4);";
+
 
 $ql = "UPDATE `cr1_booked` SET status ='Paid' WHERE ref_no='$ref'";
-if ($link->query($sql) === TRUE and $conn->query($ql) === TRUE) {
+if ($link->query($sql) === TRUE and $conn->query($ql) === TRUE and $con1->query($sqlentry) === TRUE) {
+
+
    echo '<script type="text/javascript">
                     swal("", "Succesfully Encoded", "success").then(function() {
                     window.location = "./col_list.php";});

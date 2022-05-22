@@ -14,7 +14,7 @@ if(isset($_POST['insertdata']))
 
     
 
-    $query = "INSERT INTO `fnc_budget_allo`(`id`, `department`, `amount`, `start_date`, `end_date`, `reccurrence`, `document`) VALUES ('','$dept','$amt','$s_date','$e_date','$rec','')";
+    $query = "INSERT INTO `fnc_budget_allo`(`id`, `department`, `amount`,`remaining_budget`, `start_date`, `end_date`, `reccurrence`, `document`) VALUES ('','$dept','$amt','$amt','$s_date','$e_date','$rec','')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
@@ -92,10 +92,7 @@ if(isset($_POST['insertdata']))
             <!-- /.card-header -->
             <div class="card-body">
                     <div class="wrappe">
-                        <?php include('chart.php'); ?><br><br>
-                      
                                  <div class="table-responsive-sm">
-                                   
                                    <?php
                                     // Include config file
                                     require_once "config.php";

@@ -2,27 +2,62 @@
 <?php
   require_once "./config.php";
 
-    
     if(isset($_POST['approved']))
     {   
-         $amt = $_POST['amt'];
-        $name = $_POST['fname'];
-        $dept = $_POST['dept'];
-         $status = "Release";
-        $payment = $_POST['Payment'];
+
+                          function generatekey(){
+                                $keyLenght=8;
+                                $str="1234567890";
+                                $randStr=substr(str_shuffle($str),0,$keyLenght);
+                                  return $randStr;
+                                }
+
+                                 $journal_code=generatekey();
+                                 $amt = $_POST['amt'];
+                                 $amt2=$amt;
+                                 $por=$_POST['por'];
+
+
+                                $name = $_POST['fname'];
+                                $dept = $_POST['dept'];
+                                 $status = "Release";
+                                $payment = $_POST['Payment'];
+
+
+
 
         $query = "UPDATE `fnc_budget_request` SET `Remarks`='$status' ,`Payment_type`='$payment'  WHERE Requestor='$name'";
         $query_run = mysqli_query($con, $query);
 
-        if($query_run)
-        {
+
+        $sqlentry="INSERT INTO `fnc_journal_entry` (`id`, `Acc_no`, `Particulars`, `description`, `account_category`, `account_name`, `credit`, `debit`, `jornal_code`) VALUES('', '$journal_code', 'Accounts Payable', '$payment', 'Equity', 'Accounts Payable', '$amt', '', 1),
+                                    ('', '$journal_code', '$por', '$payment', 'Expenses', '$por', '', '$amt', 2);";
+
+
+         if ($link->query($sqlentry) === TRUE) {
+             
+         
+            if ($dept=="LOG1") {
+                 $query1 = "UPDATE `log1_budget` SET `Total`=`Total`+ '$amt' ,`remaining` = `remaining`+'$amt2' WHERE `id`=1;";
+                 $query_run1 = mysqli_query($conn, $query1);
+                   if($query_run)
+               {
         
                echo '<script type="text/javascript">
                     swal("Budget", "Release", "success").then(function() {
                     window.location = "./disburse.php";});
                   </script>';
 
-           
+                  }
+
+        } else {
+
+        if($query_run)
+        {
+               echo '<script type="text/javascript">
+                    swal("Budget", "Release", "success").then(function() {
+                    window.location = "./disburse.php";});
+                  </script>';
            
         }
         else
@@ -32,6 +67,8 @@
             
     }  
 
+}
+}
 ?>
 <!-- UPDATE FOR DISBURSEMENT MODAL -->
     <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -44,7 +81,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 <form method="POST">
 
                     <div class="modal-body">
@@ -110,7 +146,6 @@
             <div class="card-body">
                     <div class="wrappe"  >
                                  <div class="table-responsive-sm">
-                                  
                                    <?php
                                     // Include config file
                                     require_once "config.php";
@@ -124,13 +159,11 @@
                                         echo "<th>Requestor</th>";
                                          echo "<th>Department</th>";
                                         echo "<th>Discription</th>";
-                                       
+                                        echo "<th>Amount</th>";
                                         echo "<th>Date</th>";
                                         echo "<th>Payment Type</th>";
                                          echo "<th>Remarks</th>";
-                                          echo "<th>Amount</th>";
                                         echo '<th><center>Action</center></th>';
-                                      
                                         echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -139,19 +172,18 @@
                                         echo "<td>" . $row['Requestor'] . "</td>";
                                         echo "<td>" . $row['Department'] . "</td>";
                                         echo "<td>" . $row['Purpose'] . "</td>";
-                                        
+                                         echo "<td>" . $row['Amount'] . "</td>";
                                         echo "<td>" . $row['Date'] . "</td>";
                                          echo "<td>" . $row['Payment_type']. "</td>";
-
                                         echo "<td>" . $row['Remarks'] . "</td>";
-                                         echo "<td>" . $row['Amount'] . "</td>";
                                         echo '<td><center>';
-                                             echo ' <button type="button" class="btn btn-primary btn-sm editbtn" style="width:100%;" > select </button>';
+                                             echo ' <button type="button" class="btn btn-primary btn-sm editbtn" style="width:100%;" > Release </button>';
                                              echo '</center></td>';
                                               
                                     echo "</tr>";
                                 }
-                              
+                                echo "</tbody>";                            
+                            echo "</table>";
                             // Free result set
                             mysqli_free_result($result);
                         } else{
@@ -160,29 +192,9 @@
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";
                     }
-
-
-                       $sq = "SELECT SUM(`Amount`) AS sum FROM `fnc_budget_request` WHERE Remarks='Approved'";
-                                    if($resul = mysqli_query($con, $sq)){
-                                        if(mysqli_num_rows($resul) > 0){
-
-                                           while($rows = mysqli_fetch_array($resul)){
-                                 echo "<thead>";
-                                echo '<tr  class="bg-secondary">';
-                                echo '<td colspan="6">Total Amount </td>';
-                                echo '<td colspan="2"> P ' . $rows['sum'] . "</td>";
-                                echo "</tr>";
-                                 echo "</thead>";
-                             echo "</tbody>";                            
-                            echo "</table>";
-                                }
-                             }
-
-                       }
                     ?>
              </div>  
      </div>
-    
 </div>
 </div>
 </div>

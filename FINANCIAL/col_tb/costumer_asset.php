@@ -2,8 +2,6 @@
 <?php
     use PHPMailer\PHPMailer\PHPMailer;
     function sendmail(){
-       
-
         $to=$_GET['email'];//Receivers Email
         $body=$_GET['message'];//body message
         $name = "Freight"; // Name of your website or yours
@@ -46,7 +44,7 @@
         if ($mail->send()) {
              echo '<script type="text/javascript">
                     swal("Message", "sent", "success").then(function() {
-                    window.location = "customer.php";});
+                    window.location = "asset_costumer.php";});
                   </script>';
         } else {
             echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
@@ -162,7 +160,7 @@
                                 echo '<thead class="bg-success">';
                                         echo "<tr>";
                                         echo "<th>Name</th>";
-                                        echo "<th>Adress</th>";
+                                        echo "<th>Address</th>";
                                         echo "<th>Mobile no.</th>";
                                         echo "<th>Email</th>";
                                        

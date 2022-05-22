@@ -41,20 +41,18 @@
                                     $sql = "SELECT * FROM `fnc_journal_entry` WHERE date(`date_created`) BETWEEN '$from' AND '$to' ORDER BY Acc_no ASC";
                                     if($result = mysqli_query($link, $sql)){
                                        if(mysqli_num_rows($result) > 0){
-                            echo '<table class="table table-bordered table-hover ">';
-                                echo '<thead class="bg-success">';
-                                        echo "<tr>";
-                                        echo "<th>Date</th>";
-                                          echo "<th>Discription</th>";
-                                         echo "<th>Ref. Code.</th>";
-                                          echo "<th>Amount</th>";
-                                        
-                                        echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
+                                            echo '<table class="table table-bordered table-hover">';
+                                                echo '<thead class="bg-success">';
+                                                        echo "<tr>";
+                                                        echo "<th>Date</th>";
+                                                          echo "<th>Description</th>";
+                                                         echo "<th>Ref. Code.</th>";
+                                                          echo "<th>Amount</th>";
+                                                        echo "</tr>";
+                                                echo "</thead>";
+                                                echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                    
                                         echo "<td><b>" . $row['Particulars'] . "</b><br>". date("M d, Y",strtotime($row['date_created'])). "</td>"; 
                                          echo "<td>" . $row['description'] . "</td>"; 
                                         echo "<td>" . $row['Acc_no'] . "</td>"; 
@@ -84,21 +82,21 @@
                     }
 
 }else{
-       // Attempt select query execution
+                                 // Attempt select query execution
                                     $sql = "SELECT * FROM `fnc_journal_entry` ORDER BY Acc_no ASC";
                                     if($result = mysqli_query($link, $sql)){
                                        if(mysqli_num_rows($result) > 0){
-                            echo '<table  class="table table-bordered table-hover ">';
-                                echo '<thead class="bg-success">';
-                                        echo "<tr>";
-                                        echo "<th>Date</th>";
-                                          echo "<th>Discription</th>";
-                                         echo "<th>Ref. Code.</th>";
-                                          echo "<th>Amount</th>";
-                                        
-                                        echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
+                                            echo '<table  class="table table-bordered table-hover ">';
+                                                echo '<thead class="bg-success">';
+                                                        echo "<tr>";
+                                                        echo "<th>Date</th>";
+                                                          echo "<th>Description</th>";
+                                                         echo "<th>Ref. Code.</th>";
+                                                          echo "<th>Amount</th>";
+                                                        
+                                                        echo "</tr>";
+                                                echo "</thead>";
+                                                echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                     

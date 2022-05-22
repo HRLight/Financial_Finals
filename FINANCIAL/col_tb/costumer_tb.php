@@ -162,7 +162,7 @@
                                 echo '<thead class="bg-success">';
                                         echo "<tr>";
                                         echo "<th>Name</th>";
-                                        echo "<th>Adress</th>";
+                                        echo "<th>Address</th>";
                                         echo "<th>Mobile no.</th>";
                                         echo "<th>Email</th>";
                                          echo "<th>Re#</th>";
