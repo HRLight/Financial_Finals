@@ -17,7 +17,7 @@
                                     // Include config file
                                     require_once "config.php";
                                     // Attempt select query execution
-                                    $sql = "SELECT * FROM `fnc_journal_entry` WHERE jornal_code=2";
+                                    $sql = "SELECT * FROM `fnc_journal_entry` WHERE jornal_code=4";
                                     if($result = mysqli_query($link, $sql)){
                                        if(mysqli_num_rows($result) > 0){
                              echo '<table id="example1" class="table table-bordered table-hover ">';
@@ -33,7 +33,7 @@
 
                                     echo "<tr>";
                                         echo "<td>" . $row['Particulars'] . "</td>"; 
-                                        echo "<td>" . $row['debit'] . "</td>";
+                                        echo "<td>" . $row['credit'] . "</td>";
                                     echo "</tr>";
                                 }
                                
