@@ -1,3 +1,37 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php
+include 'config.php';
+if(isset($_POST['payable']))
+{
+    
+        
+        $fname = ltrim($_POST['fname']);
+        $dept = ltrim($_POST['det']);
+        $amt = ltrim($_POST['amt']);
+        $desc = ltrim($_POST['desc']);
+
+
+    $query = "INSERT INTO `fnc_budget_request`(`Requestor`, `Department`, `Amount`,`Remarks`,`Purpose`)VALUES ('$fname','$dept','$amt','Approved','$desc')";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run)
+    {
+          echo '<script type="text/javascript">
+                    swal("Approved", "Budget", "success").then(function() {
+                    window.location = "payable.php";});
+                  </script>';
+
+      
+    }
+    else
+    {
+        echo '<script> alert("Data Not Saved"); </script>';
+    }
+}
+
+?>
+
+
 <!-- MODAl REQUEST FROM FOR BUDGET REQUEST -->
     <div class="modal fade" id="insert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -14,35 +48,30 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Requestors Name</label>
-                            <input type="text" name="fnam" id="fnam" class="form-control" placeholder="Enter Name"required>
+                            <input type="text" name="fname" id="fnam" value="<?php echo "".$_SESSION['fname']."". $_SESSION['lname']."";?>" class="form-control" >
                         </div>
 
                         <div class="form-group">
                             <label>Department</label>
-                            <input type="text" name="det" id="det" value="FINANCIALS" class="form-control" placeholder="Enter Department"required>
+                            <input type="text" name="det" id="det" value="FINANCIALS" class="form-control" placeholder="Enter Department">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Desription</label>
+                            <input type="text" name="desc"  class="form-control" placeholder="Enter Department">
                         </div>
 
                         <div class="form-group">
                             <label>Amount</label>
-                            <input type="text" name="am" id="am" class="form-control"
-                                placeholder="Enter Course" required>
+                            <input type="text" name="amt" id="amt" class="form-control"
+                                placeholder="Enter Amount" required>
                         </div>
 
-                        <div class="form-group">
-                            <label>Porpose</label>
-                            <input type="text" name="po" id="po" class="form-control"
-                                placeholder="Enter Your Email"required>
-                        </div>
-
-                       
-                         <div class="form-group">
-                            <label> Upload Here!  </label>
-                            <input type="file" name="statu" value="stats" id="status" class="form-control"
-                              placeholder="Enter Your Email"required>
-                        </div>
+                     
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" name="save" class="btn btn-success btn-sm">Save</button>
+                        <button type="submit" name="payable" class="btn btn-success btn-sm">Save</button>
                          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
                     </div>
                 </form>
@@ -74,24 +103,27 @@
                                     $sql = "SELECT * FROM `fnc_budget_request` WHERE Remarks='Approved'";
                                     if($result = mysqli_query($link, $sql)){
                                         if(mysqli_num_rows($result) > 0){
-                             echo '<table id="example11" class="table table-bordered table-hover ">';
+                            echo '<table id="example11" class="table table-bordered table-hover ">';
                                 echo '<thead class="bg-success">';
                                         echo "<tr>";
-                                        echo "<th>Department</th>";
+                                        echo "<th>Requestor </th>";
+                                         echo "<th>Department</th>";
                                       
                                         echo "<th>Purpose   </th>";
-                                        echo "<th>Payment_type   </th>";
-                                        echo "<th>Amount</th>";
-                                        echo "</tr>";
-                                        echo "</thead>";
-                                        echo "<tbody>";
-                                while($row = mysqli_fetch_array($result)){
-                                        echo "<tr>";
-                                        echo "<td>" . $row['Department'] . "</td>";
                                        
+                                        echo "<th>Status</th>";
+                                          echo "<th>Amount</th>";
+                                        echo "</tr>";
+                                echo "</thead>";
+                                echo "<tbody>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr>";
+                                        
+                                        echo "<td>" . $row['Requestor'] . "</td>"; 
+                                        echo "<td>" . $row['Department'] . "</td>";
                                         echo "<td>" . $row['Purpose'] . "</td>";
-                                        echo "<td>" . $row['Payment_type'] . "</td>";
-                                        echo "<td>" . $row['Amount'] . "</td>";
+                                        echo "<td>" . $row['Remarks'] . "</td>";
+                                         echo "<td>" . $row['Amount'] . "</td>";
                                         echo "</tr>";
                                 }
                             // Free result set
@@ -110,7 +142,7 @@
                                            while($rows = mysqli_fetch_array($resul)){
                                  echo "<thead>";
                                 echo '<tr  class="bg-secondary">';
-                                echo '<td colspan="3">Total Amount </td>';
+                                echo '<td colspan="4">Total Amount </td>';
                                 echo '<td colspan="1"> P ' . $rows['sum'] . "</td>";
                                 echo "</tr>";
                                  echo "</thead>";

@@ -23,7 +23,6 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
               
             </ol>
           </div><!-- /.col -->
@@ -39,7 +38,7 @@
         <div class="row">
          
       <?php
-      $con5  = mysqli_connect("localhost","root","","fnc_management");
+      $con5  = mysqli_connect("194.163.35.151","u260512242_freight","Freight123#","u260512242_freight");
       if (!$con5) {
      # code...
        echo "Problem in database connection! Contact administrator!" . mysqli_error();
@@ -71,7 +70,7 @@
             </div>
           </div>
            <?php
-      $con5  = mysqli_connect("localhost","root","","fnc_management");
+      $con5  =   mysqli_connect("194.163.35.151","u260512242_freight","Freight123#","u260512242_freight");
       if (!$con5) {
      # code...
        echo "Problem in database connection! Contact administrator!" . mysqli_error();
@@ -103,7 +102,7 @@
           </div>
 
        <?php
-      $con4  = mysqli_connect("localhost","root","","fnc_management");
+      $con4  =  mysqli_connect("194.163.35.151","u260512242_freight","Freight123#","u260512242_freight");
       if (!$con4) {
      # code...
        echo "Problem in database connection! Contact administrator!" . mysqli_error();
@@ -169,9 +168,8 @@
                 </div>
               </div>
               <!-- /.card-body -->
-            </div>
-   
-          </div>
+           </div>
+        </div>
 
           <div class="col-md-6">
            
@@ -219,9 +217,9 @@
 include('includes/scripts.php');
 ?>
 <?php
-$con4  = mysqli_connect("localhost","root","","fnc_management");
+$con4  =   mysqli_connect("194.163.35.151","u260512242_freight","Freight123#","u260512242_freight");
  if (!$con4) {
-     # code...
+    # code...
     echo "Problem in database connection! Contact administrator!" . mysqli_error();
  }else{
          $sql ="SELECT * FROM `fnc_budget_allo`";
@@ -236,7 +234,7 @@ $con4  = mysqli_connect("localhost","root","","fnc_management");
  }
 ?>
 <?php
-$con5  = mysqli_connect("localhost","root","","fnc_management");
+$con5  =  mysqli_connect("194.163.35.151","u260512242_freight","Freight123#","u260512242_freight");
  if (!$con5) {
      # code...
     echo "Problem in database connection! Contact administrator!" . mysqli_error();

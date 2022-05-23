@@ -13,31 +13,28 @@
                                     // Include config file
                                     require_once "config.php";
                                     // Attempt select query execution
-                                    $sql = "SELECT * FROM `fnc_budget_report` ;";
+                                    $sql = "SELECT * FROM `fnc_budget_allo`;";
                                     if($result = mysqli_query($link, $sql)){
                                        if(mysqli_num_rows($result) > 0){
                             echo '<table id="example11" class="table table-bordered table-hover ">';
                                 echo '<thead class="bg-success">';
                                         echo "<tr>";
+                                         echo "<th>Department</th>";
                                         echo "<th>From</th>";
                                          echo "<th>To</th>";
-                                        echo "<th>Total Cash</th>";
-                                        echo "<th>Total Budget</th>";
-                                        echo "<th>Accumulated Budget</th>";
+                                        echo "<th>Allocated Budget</th>";
                                         echo "<th>Remaining Budget</th>";
-                                       
                                         echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
 
-                                        echo "<td>" . $row['Month'] . "</td>"; 
-                                        echo "<td>" . $row['Year'] . "</td>";
-                                        echo "<td>" . $row['Total_cash'] . "</td>";
-                                        echo "<td>" . $row['Total_budget'] . "</td>";
-                                        echo "<td>" . $row['Accumulated_Budget'] . "</td>";
-                                        echo "<td>" . $row['Remaining_Budget'] . "</td>";
+                                        echo "<td>" .$row['department'] . "</td>"; 
+                                        echo "<td>" .  date("M d, Y",strtotime($row['start_date'])). "</td>";
+                                        echo "<td>" . date("M d, Y",strtotime($row['end_date'])) . "</td>";
+                                        echo "<td>" . $row['remaining_budget']."</td>";
+                                        echo "<td>" . $row['amount'] . "</td>";
                                         
                                     echo "</tr>";
                                 }

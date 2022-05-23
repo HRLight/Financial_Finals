@@ -5,7 +5,31 @@
        
 
         $to=$_GET['email'];//Receivers Email
-        $body=$_GET['message'];//body message
+        $body='<!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="utf-8">
+                        <title>Freight</title>
+                    </head>
+                    <body>
+                        <div style="padding-bottom: 300px;  margin-left: 500px; border: 5px outset green;
+                      background-color: lightblue; darkblue;  width: 500px; height:500px; ">
+                        
+                             <h1 style="background-color:green;">Hello This From Starship Company</h1>
+                             <h3>Thank You For Puchasing Our Servive !</h3>
+                             <p> We would Like to Inform You for your regarding of your payment </p>
+                             <p>You Can Choose from the Following!</p>
+                             <h4>GCASH</h4><p>Name: Frieght Starship </p><p>NO: 09070368238 </p>
+                              <h4>Paymaya</h4><p>Name: Frieght Starship </p><p>NO: 09070368238 </p>
+                              <h4>Paypal</h4><p>Name: Frieght Starship </p><p>NO: 09070368238 </p>
+                              <h4>BANK Account</h4><p>Name: Frieght Starship </p><p>NO: 1234 5678 9876 5432 </p>
+
+                               <p>Please Provide The Proff of payment to this email!</p>
+                                   <p>Using Screenshot of the reciept!!!! </p>
+
+                    </div>
+                    </body>
+                    </html>';//body message
         $name = "Freight"; // Name of your website or yours
           // mail of reciever
         $subject = "For Payment";
@@ -101,15 +125,11 @@
                             <input type="text" name="email" id="email" class="form-control"
                                 placeholder="Enter Your Email" readonly >
                         </div>
-                        <div class="form-group">
-                            <label> Email </label>
-                            <textarea type="text" name="message" id="message" class="form-control"
-                                placeholder="Write A message here!"></textarea>
-                        </div>
+                      
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="sendmail" class="btn btn-primary">Send Email</button>
+                        <button type="submit" name="sendmail" class="btn btn-primary"><i class="fas fa-location-arrow"></i>Send Email</button>
                     </div>
                 </form>
 
@@ -150,7 +170,6 @@
           <div class="card-body">
                     <div class="wrappe">
                                  <div class="table-responsive-sm">
-                                  
                                    <?php
                                     // Include config file
                                     require_once "config.php";
@@ -176,7 +195,7 @@
                                         echo "<td>" . $row['s_fname'] . "</td>";
                                        echo "<td>" . $row['s_add'] . "</td>";
                                        echo "<td>" . $row['r_contact'] . "</td>";
-                                        echo "<td>" . $row['email'] . "</td>";
+                                        echo "<td>" . $row['s_email'] . "</td>";
                                          echo "<td>" . $row['ref_no'] . "</td>";
                                        echo "<td>" . $row['price'] . "</td>";
                                     

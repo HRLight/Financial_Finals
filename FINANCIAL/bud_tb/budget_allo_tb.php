@@ -131,10 +131,10 @@ if(isset($_POST['insertdata']))
                                         
                                         echo "<td>" . $row['department'] . "</td>";
                                        
-                                        echo "<td>" . $row['start_date'] . "</td>"; 
-                                        echo "<td>" . $row['end_date'] . "</td>";
+                                        echo "<td>" .  date("M d, Y",strtotime($row['start_date'])). "</td>";
+                                        echo "<td>" . date("M d, Y",strtotime($row['end_date'])) . "</td>";
                                         echo "<td>" . $row['reccurrence'] . "</td>";
-                                         echo "<td>" . $row['amount'] . "</td>";
+                                        echo "<td>" . $row['remaining_budget']."</td>";
                                         
                                     echo "</tr>";
                                 }

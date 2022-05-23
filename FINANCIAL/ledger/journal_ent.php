@@ -1,3 +1,59 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php
+include 'config.php';
+    if(isset($_POST['save']))
+    {   
+        $id = $_POST['code'];
+        $query = " UPDATE `fnc_collection` SET `Account_no`='CRM-$id',`Amount`=0 WHERE `journal_code`='$id';";
+        $query_run = mysqli_query($conn, $query);
+
+         $query2 = " UPDATE `fnc_journal_entry` SET `credit`=0,`debit`=0 WHERE `Acc_no`='$id';";
+        $query_run2 = mysqli_query($con1, $query2);
+        if($query_run)
+        {
+            if ( $query_run2) {
+                
+            
+           echo '<script type="text/javascript">
+                    swal("Success", "Void", "success").then(function() {
+                    window.location = "journal_entry.php";});
+                  </script>';
+            }
+        }
+        else
+        {
+            echo '<script> alert("Data Not Updated"); </script>';
+        }
+    }
+?>
+<!-- MODAl REQUEST FROM FOR BUDGET REQUEST -->
+    <div class="modal fade" id="insert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header  p-3 mb-2 bg-success text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Voiding Process</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form  method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Account Number</label>
+                            <input type="number" name="code" id="fnam" class="form-control" placeholder="Enter Name"required>
+                        </div>   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" name="save" class="btn btn-success btn-sm">Save</button>
+                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
 <div class="row">
         <div class="col-12">
           <div class="card">
@@ -7,6 +63,9 @@
             <!-- /.card-header -->
             <div class="card-body">
                     <div class="wrappe"  >
+                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert">
+                       Voiding
+                    </button>
                                  <div class="table-responsive-sm">
                                    
                                    <?php
@@ -20,7 +79,7 @@
                                 echo '<thead class="bg-success">';
                                         echo "<tr>";
                                              echo "<th><center>Date</center></th>";
-                                             echo "<th><center>Account No.</center></th>";
+                                             echo "<th><center>Journal Code</center></th>";
                                              echo "<th><center>Particulars</center></th>";
                                              echo "<th><center>Debit</center></th>";
                                              echo "<th><center>Credit</center></th>";

@@ -20,6 +20,7 @@
                             echo '<table id="example1" class="table table-bordered table-hover ">';
                                 echo '<thead class="bg-success">';
                                         echo "<tr>";
+                                         echo "<th>Image</th>";
                                          echo "<th>Name</th>";
                                         echo "<th>Account No.</th>";
                                         echo "<th>Discription</th>";
@@ -33,6 +34,11 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
+                                      echo "<td>";
+                                         echo "
+                                         <embed src='data:".$row['document_mine'].";base64,".base64_encode($row['document_data'])."' width='100'/></li>";
+          
+                                        echo "</td>";
                                         echo "<td>" . $row['Name'] . "</td>";
                                         echo "<td>" . $row['Account_no'] . "</td>";
                                         echo "<td>" . $row['Description'] . "</td>";
@@ -61,7 +67,7 @@
                                            while($rows = mysqli_fetch_array($resul)){
                                  echo "<thead>";
                                 echo '<tr class="bg-secondary">';
-                                echo '<td colspan="7">Total Amount </td>';
+                                echo '<td colspan="8">Total Amount </td>';
                                 echo "<td>P " . $rows['sum'] . "</td>";
                                 echo "</tr>";
                                  echo "</thead>";
