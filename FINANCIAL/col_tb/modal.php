@@ -92,9 +92,12 @@ if (isset($_POST['pay']))
     $ref=$_POST['ref'];
     $amt=$_POST['amt'];
     $payment=$_POST['Payment'];
+      $name = $_FILES['myfile']['name'];
+          $type = $_FILES['myfile']['type'];
+          $data = file_get_contents($_FILES['myfile']['tmp_name']);
 
 // dito 
-$sql = "INSERT INTO `fnc_collection`(`PK_Account_id`, `Name`, `Account_no`, `Particular`, `Ref_no`, `Payment_type`, `Amount`, `Description`) VALUES ('','$name','SINV-1010$i','$par','$ref','$payment','$amt','$desc') , ('','Colected sales','SINV-1010$i','0','$ref','$payment','$amt','$desc')";
+$sql = "INSERT INTO `fnc_collection`(`PK_Account_id`, `Name`, `Account_no`, `Particular`, `Ref_no`, `Payment_type`, `Amount`, `Description`,`document_name`, `document_mine`, `document_data`) VALUES ('','$name','SINV-1010$i','$par','$ref','$payment','$amt','$desc','$name','$type','$data')";
 
 $sqlentry="INSERT INTO `fnc_journal_entry` (`id`, `Acc_no`, `Particulars`, `description`, `account_category`, `account_name`, `credit`, `debit`, `jornal_code`) VALUES('', '$i', 'Accounts Recievable', '$payment', 'Asset', 'Accounts Recievable', '       ', '$amt', 3),
                         ('', '$i', '$par', '$payment', 'Revenue', '$par', '$amt', '', 4);";
