@@ -10,12 +10,14 @@
             <div class="card-body">
                     <div class="wrappe"  >
                                  <div class="table-responsive-sm">
-                                    <h6> Revenue</h6>
+                                    <h6></h6>
                             <!-- type the main content here ! -->
   
                                    <?php
                                     // Include config file
                                     require_once "config.php";
+                                 
+
                                     // Attempt select query execution
                                     $sql = "SELECT * FROM `fnc_journal_entry` WHERE jornal_code=4";
                                     if($result = mysqli_query($link, $sql)){
@@ -45,21 +47,19 @@
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";
                     }
-                       $sq = "SELECT SUM(`debit`) AS sum FROM `fnc_journal_entry` WHERE jornal_code=2";
-                                    if($resul = mysqli_query($conn, $sq)){
-                                        if(mysqli_num_rows($resul) > 0){
+                       $sq = "SELECT SUM(`credit`) AS sum FROM `fnc_journal_entry` WHERE jornal_code=4";
+                        $resul = mysqli_query($conn, $sq);
 
                                            while($rows = mysqli_fetch_array($resul)){
                                  echo "<thead>";
                                 echo '<tr  class="bg-secondary">';
                                 echo '<td >Total Amount </td>';
+                                $revenue=$rows['sum'];
                                 echo '<td> P ' . $rows['sum'] . "</td>";
                                 echo "</tr>";
                                  echo "</thead>";
                                 }
-                             }
 
-                       }
 
                     ?>
 
@@ -94,20 +94,24 @@
                     }
 
                           $sq = "SELECT SUM(`debit`) AS sum FROM `fnc_journal_entry` WHERE jornal_code=2";
-                                    if($resul = mysqli_query($conn, $sq)){
-                                        if(mysqli_num_rows($resul) > 0){
-
-                                           while($rows = mysqli_fetch_array($resul)){
+                                $resul = mysqli_query($conn, $sq);
+                                while($rows = mysqli_fetch_array($resul)){
                                  echo "<thead>";
                                 echo '<tr  class="bg-secondary">';
                                 echo '<td >Total Amount </td>';
+                                $expenses=$rows['sum'];
                                 echo '<td> P ' . $rows['sum'] . "</td>";
                                 echo "</tr>";
                                  echo "</thead>";
-                                }
-                             }
-
-                       }
+                             
+                                   }
+                       $netincome=$revenue-$expenses;
+                            echo "<thead>";
+                                echo '<tr  class="bg-secondary">';
+                                echo '<td >Net Income </td>';
+                                echo '<td> P ' . $netincome . "</td>";
+                                echo "</tr>";
+                                 echo "</thead>";
                          echo "</tbody>";                            
                             echo "</table>";
                     ?>

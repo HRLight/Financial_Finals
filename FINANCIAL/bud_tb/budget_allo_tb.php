@@ -49,7 +49,21 @@ if(isset($_POST['insertdata']))
                     <div class="modal-body">
                         <div class="form-group">
                             <label> Department </label>
-                            <input type="text" name="dept" class="form-control" placeholder="Enter Department" required>
+                            <select  name="dept" class="form-control" placeholder="Enter Department" required>
+                                <option>Select</option>
+                                <option value="HR1">Human Resource 1</option>
+                                <option value="HR2">Human Resource 2</option>
+                                <option value="HR3">Human Resource 3</option>
+                                <option value="HR4">Human Resource 4</option>
+                                <option value="Core1">Core Transaction 1</option>
+                                <option value="Core2">Core Transaction 2</option>
+                                <option value="Log1">Logistics 1</option>
+                                <option value="Log2">Logistics 2</option>
+                                <option value="Admin">Administrative</option>
+                                <option value="Financials">Financials</option>
+
+                            </select>
+                            
                         </div>
 
                         <div class="form-group">

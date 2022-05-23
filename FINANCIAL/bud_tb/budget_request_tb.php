@@ -1,5 +1,4 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 <?php
   require_once "./config.php";
 
@@ -58,58 +57,6 @@
     }
       
 ?>
-<!-- MODAl REQUEST FROM FOR BUDGET REQUEST -->
-    <div class="modal fade" id="insert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header  p-3 mb-2 bg-success text-white">
-                    <h5 class="modal-title" id="exampleModalLabel">Budget Request</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <form  method="POST">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Requestors Name</label>
-                            <input type="text" name="fnam" id="fnam" class="form-control" placeholder="Enter Name"required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Department</label>
-                            <input type="text" name="det" id="det" class="form-control" placeholder="Enter Department"required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Amount</label>
-                            <input type="text" name="am" id="am" class="form-control"
-                                placeholder="Enter Course" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Porpose</label>
-                            <input type="text" name="po" id="po" class="form-control"
-                                placeholder="Enter Your Email"required>
-                        </div>
-
-                       
-                         <div class="form-group">
-                            <label> Upload Here!  </label>
-                            <input type="file" name="statu" value="stats" id="status" class="form-control"
-                              placeholder="Enter Your Email"required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" name="save" class="btn btn-success btn-sm">Save</button>
-                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
 
 
 
@@ -175,10 +122,7 @@
             <!-- /.card-header -->
             <div class="card-body">
 
-                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert">
-                        Request Form
-                    </button>
-
+                
                     <div class="wrappe"  >
                                  <div class="table-responsive-sm">
                                    

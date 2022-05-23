@@ -15,7 +15,7 @@
                                     $sql = "SELECT * FROM `cr1_booked` WHERE status='Verify'";
                                     if($result = mysqli_query($link, $sql)){
                                        if(mysqli_num_rows($result) > 0){
-                             echo '<table id="example1" class="table table-bordered table-hover ">';
+                             echo '<table id="example11" class="table table-bordered table-hover ">';
                                 echo '<thead class="bg-success">';
                                         echo "<tr>";
                                         echo "<th>Name</th>";

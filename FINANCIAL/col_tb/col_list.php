@@ -28,7 +28,6 @@
                                         echo "<th>Date Receive</th>";
                                           echo "<th>Mode of Payment</th>";
                                         echo "<th>Amount</th>";
-                                       
                                         echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";

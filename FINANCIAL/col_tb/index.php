@@ -79,7 +79,7 @@
                                 echo '<td colspan="5">Total Amount </td>';
                                 echo '<td  colspan="1"> P ' . $rows['sum'] . "</td>";
                                 echo "</tr>";
-                                 echo "</thead>";
+                                echo "</thead>";
                              echo "</tbody>";                            
                             echo "</table>";
                                 }

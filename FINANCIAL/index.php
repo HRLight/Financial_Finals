@@ -38,7 +38,7 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
          
-                  <?php
+      <?php
       $con5  = mysqli_connect("localhost","root","","fnc_management");
       if (!$con5) {
      # code...
