@@ -9,7 +9,7 @@
                 </div>
                 <div class="modal-body">
                 <div class="container-fluid">
-                <form method="POST">
+                <form method="POST"  enctype="multipart/form-data">
                     <div>  
                       <div class="from-control">
                             <label style="position:relative; top:7px;">Name:</label>
@@ -57,7 +57,7 @@
 
                             <div class="form-group">
                             <label style="position:relative; top:7px;">Upload Here!</label>
-                            <input type="file" name="file" class="form-control">
+                            <input type="file" name="myfile" class="form-control"/>
                                 
                             </div>
                         </div>
@@ -93,13 +93,14 @@ if (isset($_POST['pay']))
     $amt=$_POST['amt'];
     $payment=$_POST['Payment'];
 
+// dito 
 $sql = "INSERT INTO `fnc_collection`(`PK_Account_id`, `Name`, `Account_no`, `Particular`, `Ref_no`, `Payment_type`, `Amount`, `Description`) VALUES ('','$name','SINV-1010$i','$par','$ref','$payment','$amt','$desc') , ('','Colected sales','SINV-1010$i','0','$ref','$payment','$amt','$desc')";
 
 $sqlentry="INSERT INTO `fnc_journal_entry` (`id`, `Acc_no`, `Particulars`, `description`, `account_category`, `account_name`, `credit`, `debit`, `jornal_code`) VALUES('', '$i', 'Accounts Recievable', '$payment', 'Asset', 'Accounts Recievable', '       ', '$amt', 3),
                         ('', '$i', '$par', '$payment', 'Revenue', '$par', '$amt', '', 4);";
 
 
-$ql = "UPDATE `cr1_booked` SET status ='Paid' WHERE ref_no='$ref'";
+$ql = "UPDATE `cr1_booked` SET status ='8' WHERE ref_no='$ref'";
 if ($link->query($sql) === TRUE and $conn->query($ql) === TRUE and $con1->query($sqlentry) === TRUE) {
 
 
